@@ -25,6 +25,8 @@ public class Functions {
         System.out.println("Numero mas popular en { 22, 101, 102, 101, 102, 525, 88 } : " + NumMasPopular(new int[]{ 22, 101, 102, 101, 102, 525, 88 }));
         
         System.out.println("Sumar digitos de 29: " + addTwoDigits(29));
+		
+        System.out.println("Invertir solo letras y no caracteres especiales de Ab,c,TR& : " + reverseJustLetters("Ab,c,TR&"));
     }
     
     public static double distance(double x1, double y1, double x2, double y2, double x3, double y3) {
@@ -94,5 +96,29 @@ public class Functions {
         }
         
         return sum;
+    }
+	
+    public static String reverseJustLetters(String word) {
+
+        char[] parts = word.toCharArray();
+        List<String> cleared = new ArrayList<String>();
+
+        for (int x = 0; x < parts.length ; x++) {
+            if (Character.isLetter(parts[x])) {
+                cleared.add(String.valueOf(parts[x]));
+            }
+        }
+
+        Collections.reverse(cleared);
+
+        int counter = 0;
+        for (int x = 0; x < parts.length ; x++) {
+            if (Character.isLetter(parts[x])) {
+                parts[x] = cleared.get(counter).charAt(0);
+                counter++;
+            }
+        }
+
+        return String.valueOf(parts); 
     }
 }
